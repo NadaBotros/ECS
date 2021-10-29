@@ -1,0 +1,32 @@
+CREATE TABLE Users (
+    userID int NOT NULL AUTO_INCREMENT,
+    userName nvarchar(255) NOT NULL,
+    password nvarchar(255) NOT NULL,
+	PRIMARY KEY (userID)
+   
+);
+
+CREATE TABLE Meals (
+    mealID int NOT NULL AUTO_INCREMENT,
+    mealName nvarchar(255)  NOT NULL,
+	mealDayNumber int NOT NULL,
+    today nvarchar(255) NOT NULL,
+	PRIMARY KEY (mealID)
+);
+
+CREATE TABLE Orders (
+    OrderID int NOT NULL AUTO_INCREMENT,
+    userOID int NOT NULL,
+    mealOID int NOT NULL,
+    todayDate date,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (userOID) REFERENCES Users(userID),
+    FOREIGN KEY (mealOID) REFERENCES Meals(mealID)
+);
+
+
+INSERT INTO Users
+VALUES ('nada_admin',12345);
+
+INSERT INTO Users
+VALUES ('nada_user',12345);
